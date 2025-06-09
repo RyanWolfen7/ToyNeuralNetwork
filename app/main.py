@@ -11,12 +11,12 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["127.0.0.1:54147", "127.0.0.1:3000"],  # Allows all origins
+    allow_origins=["127.0.0.1:8000", "127.0.0.1:3000"],  # Allows all origins
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+app.include_router(api_router)
 
 app.mount("/", StaticFiles(directory="app/static", html = True), name="static")
 
-app.include_router(api_router)
