@@ -1,5 +1,5 @@
 import numpy as np
-from app.neural_network.neuron import Neuron
+from neuron import Neuron
 
 class TestNeuralNetwork:
     """A simple neural network class for testing purposes."""
