@@ -4,10 +4,14 @@ def sigmoid(x):
     """Compute the sigmoid activation function."""
     return 1 / (1 + np.exp(-x))
 
+def mse_loss(predictions, targets):
+    """Compute the mean squared error loss."""
+    return np.mean((predictions - targets) ** 2)
+
 class Neuron:
     """A simple neuron class with weights and bias."""
     
-    def __init__(self, weights=np.array([0.0]), bias=0.0):
+    def __init__(self, weights=np.array([0, 0]), bias=0.0):
         self.weights = weights
         self.bias = bias
 
