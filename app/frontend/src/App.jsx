@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 
 function App() {
@@ -9,6 +9,21 @@ function App() {
     biases: [0,1,2],
     weights: [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6]]
   });
+
+  useEffect(() => {
+    const fetchNetwork = async () => {
+      const response = await fetch('/api/network');
+      if (!response.ok) {
+        console.error('Failed to fetch network');
+        return;
+      }
+      const data = await response.json();
+      console.log(data)
+      setNetwork(data);
+    }
+
+    fetchNetwork();
+  },[])
 
   const updateNetwork = async () => {
     const response = await fetch('/api/network', {
